@@ -5,13 +5,8 @@
   * See COPYING.txt for license details.
   */
 -->
-
 <sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
-    <section name="AdminProductSourcesSection">
-        <element name="assignSources" type="button" selector="button[data-index='assign_sources_button']" timeout="30"/>
-        <element name="advancedInventory" type="button" selector="button[data-index='advanced_inventory_button'].action-basic" timeout="30"/>
-    </section>
+	xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
     <section name="AdminProductSourcesGrid">
         <element name="rowByIndex" type="input" selector="div[data-index='sources'] .data-row[data-repeat-index='{{arg1}}']" parameterized="true"/>
         <element name="firstRow" type="input" selector="div[data-index='sources'] .data-row[data-repeat-index='0']"/>
