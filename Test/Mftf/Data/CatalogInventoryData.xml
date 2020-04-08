@@ -26,17 +26,11 @@
     <entity name="defaultProductQtyBoughtWith10Pieces">
         <data key="value">90</data>
     </entity>
-    <entity name="defaultProductWithNegativeThresholdBoughtWith101Piece">
-        <data key="value">49</data>
-    </entity>
     <entity name="productWithThousandQty">
         <data key="value">1000</data>
     </entity>
     <entity name="productWithThousandQtyBoughtWithTwoPieces">
         <data key="value">998</data>
-    </entity>
-    <entity name="productWithThousandQtyBoughtWith5Pieces">
-        <data key="value">995</data>
     </entity>
     <entity name="productWithThousandQtyBoughtWith10Pieces">
         <data key="value">990</data>
@@ -44,14 +38,8 @@
     <entity name="defaultProductStockQtyWithTwoSourcesBoughtWith10Pieces">
         <data key="value">190</data>
     </entity>
-    <entity name="defaultProductStockQtyWithTwoSources">
-        <data key="value">200</data>
-    </entity>
     <entity name="minimalProductQty">
         <data key="value">1</data>
-    </entity>
-    <entity name="twoPiecesAddToCart">
-        <data key="value">2</data>
     </entity>
     <entity name="decimalProductQty">
         <data key="value">1.5</data>
@@ -65,14 +53,8 @@
     <entity name="tenPiecesAddToCart">
         <data key="value">10</data>
     </entity>
-    <entity name="twentyPiecesAddToCart">
-        <data key="value">20</data>
-    </entity>
     <entity name="zeroProductQuantity">
         <data key="value">0</data>
-    </entity>
-    <entity name="negativeProductQuantity">
-        <data key="value">-50</data>
     </entity>
     <entity name="SourceStatusInStock">
         <data key="value">In Stock</data>

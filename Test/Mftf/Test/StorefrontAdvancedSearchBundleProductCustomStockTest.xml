@@ -17,17 +17,17 @@
             <group value="msi"/>
             <group value="multi_mode"/>
             <skip>
-                <issueId value="https://github.com/magento/inventory/issues/2836"/>
+                <issueId value="https://github.com/magento/inventory/issues/522"/>
             </skip>
         </annotations>
 
         <before>
             <!--Create test data.-->
             <createData entity="SimpleSubCategory" stepKey="category"/>
-            <createData entity="ABC_dfj_SimpleProduct" stepKey="product">
+            <createData entity="SimpleProduct" stepKey="product">
                 <requiredEntity createDataKey="category"/>
             </createData>
-            <createData entity="AdvancedSearchBundleProduct" stepKey="bundleProduct"/>
+            <createData entity="ApiBundleProduct" stepKey="bundleProduct"/>
             <createData entity="BasicMsiStockWithMainWebsite1" stepKey="stock"/>
             <createData entity="FullSource1" stepKey="source"/>
             <createData entity="SourceStockLinked1" stepKey="sourceStockLink">
@@ -37,9 +37,6 @@
             <!--Assign created source to product.-->
             <actionGroup ref="LoginAsAdmin" stepKey="loginToAdminArea"/>
             <amOnPage url="{{AdminProductEditPage.url($$product.id$$)}}" stepKey="openProduct1EditPageToAssignSource"/>
-            <actionGroup ref="UnassignSourceFromProductActionGroup" stepKey="unassignDefaultSourceFromProduct">
-                <argument name="sourceCode" value="{{_defaultSource.name}}"/>
-            </actionGroup>
             <actionGroup ref="AdminAssignSourceToProductAndSetSourceQuantityActionGroup" stepKey="assignSourceToProduct">
                 <argument name="sourceCode" value="$source.source[source_code]$"/>
             </actionGroup>
@@ -54,13 +51,13 @@
             <waitForElementVisible selector="{{AdminProductFormBundleSection.addProductsToOption}}" stepKey="waitForAddProductsToBundle"/>
             <click selector="{{AdminProductFormBundleSection.addProductsToOption}}" stepKey="clickAddProductsToOption"/>
             <waitForPageLoad stepKey="waitForPageLoadAfterBundleProducts"/>
-            <actionGroup ref="FilterProductGridBySkuActionGroup" stepKey="filterBundleProductOptions">
+            <actionGroup ref="filterProductGridBySku" stepKey="filterBundleProductOptions">
                 <argument name="product" value="$$product$$"/>
             </actionGroup>
             <checkOption selector="{{AdminAddProductsToOptionPanel.firstCheckbox}}" stepKey="selectFirstGridRow"/>
             <click selector="{{AdminAddProductsToOptionPanel.addSelectedProducts}}" stepKey="clickAddSelectedBundleProducts"/>
             <fillField selector="{{AdminProductFormBundleSection.bundleOptionXProductYQuantity('0', '0')}}" userInput="5" stepKey="fillProductDefaultQty"/>
-            <actionGroup ref="AdminFormSaveAndClose" stepKey="saveBundleProduct"/>
+            <actionGroup ref="AdminFormSaveAndClose" stepKey="saveAndCloseCreatedGroupedProduct"/>
         </before>
         <after>
             <!--Delete test data.-->
@@ -86,7 +83,7 @@
             <argument name="name" value="$bundleProduct.name$"/>
         </actionGroup>
         <!--Verify searched product by name.-->
-        <actionGroup ref="StorefrontQuickSearchCheckProductNameInGridActionGroup" stepKey="verifyProductSearchedByName">
+        <actionGroup ref="StorefrontQuickSearchCheckProductNameInGrid" stepKey="verifyProductSearchedByName">
             <argument name="productName" value="$bundleProduct.name$"/>
             <argument name="index" value="1"/>
         </actionGroup>
@@ -96,7 +93,7 @@
             <argument name="sku" value="$bundleProduct.sku$"/>
         </actionGroup>
         <!--Verify searched product by sku.-->
-        <actionGroup ref="StorefrontQuickSearchCheckProductNameInGridActionGroup" stepKey="verifyProductSearchedBySku">
+        <actionGroup ref="StorefrontQuickSearchCheckProductNameInGrid" stepKey="verifyProductSearchedBySku">
             <argument name="productName" value="$bundleProduct.name$"/>
             <argument name="index" value="1"/>
         </actionGroup>
